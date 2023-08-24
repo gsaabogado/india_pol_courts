@@ -1,11 +1,11 @@
-# Replication package for the study "Court Decisions and Air Pollution: Evidence from 10,000 Penal Cases in India," Published in Environmental and Resource Economics
+# Replication package 
 
-This repository contains the code to replicate the results from the study court Decisions and Air Pollution: Evidence from 10,000 Penal Cases in India. It contains two main folders. 
+This repository contains the code to replicate the results from the study "Court Decisions and Air Pollution: Evidence from 10,000 Penal Cases in India," Published in Environmental and Resource Economics. It contains two main folders. 
 
 - 03_scripts: Contains the scripts necessary to construct the data sets and run the regressions
-- 05_submissions: Contains the quarto files to replicate the working paper one by one. This allow researchers to replicate each of the tables and figures in the study.
+- 05_submissions: Contains the quarto files to replicate the working paper one by one. This allows researchers to replicate each of the tables and figures in the study.
 
-Note: Because of space constraints, we store all the data in the following dropbox links.
+Because of space constraints, we store all the data in the following dropbox links.
 
 * [Raw data sets](https://www.dropbox.com/sh/b9y8jznjxc85xzb/AAAKiy58JwYTAJcYbCTadZv_a?dl=0)
 * [Generated data sets](https://www.dropbox.com/sh/ai2reos94poti0w/AADJgI8i75MQ7TLuuZNrp9Z5a?dl=0)
@@ -13,7 +13,7 @@ Note: Because of space constraints, we store all the data in the following dropb
 
 ## Structure of the 03_scripts folder
 
-The folder contains six different files. Each file allows you to create specific data sets necessary for the final regression. Note that you have access to the generated data sets in the "Generated data sets" dropbox folder. So, there is no need to actually construct the data by yourself. You can jump directly to 05_reg and run the econometric specifications necessary to replicate the results of the paper.
+The folder contains six different files. Each file allows you to create specific data sets necessary for the final regression. Note that you have access to the generated data sets in the "Generated data sets" Dropbox folder. So, there is no need actually to construct the data by yourself. You can jump directly to 05_reg and run the econometric specifications necessary to replicate the results of the paper.
 
 - 01_cases: Loads and manipulates the data on judicial cases
 - 02_pm25: Loads and manipulates the data on fine particulate matter concentrations from the Atmospheric Composition Analysis group of Washington University.
@@ -28,7 +28,7 @@ This folder contains the quarto file "art.qmd" to replicate the study.
 
 ## R Environment
 
-These are the characteristics of the R environment we had when running the code. This is relevant in case some of the packages or used functions do not have support anymore in CRAN. I also include the list of packages and its versions in the folder R_packages.
+These are the characteristics of the R environment we had when running the code. This is relevant in case some of the packages or used functions do not have support anymore in CRAN. I also include the list of packages and their versions in the folder R_packages.
 
 R version 4.2.1 (2022-06-23 ucrt)
 Platform: x86_64-w64-mingw32/x64 (64-bit)
