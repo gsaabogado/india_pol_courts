@@ -1,0 +1,984 @@
+---
+title: "Court Decisions and Air Pollution"
+
+date: last-modified
+date-format: long
+filters: [remove_title.lua]
+format:
+  pdf: 
+    cite-method: natbib
+    colorlinks: false
+    number-sections: true
+    include-in-header:
+      - text: |
+          \usepackage{threeparttable}
+          \usepackage{placeins}
+          \usepackage{amsmath}
+          \usepackage[round]{natbib}
+          \usepackage{setspace}\setstretch{1.5}
+          \usepackage[left=2.5cm,bottom=2.5cm,right=2.5cm,top=2.5cm]{geometry}
+          \usepackage[footnotesize, justification=centering]{caption}
+          \captionsetup{justification=raggedright, singlelinecheck=false}
+          
+          \usepackage{sectsty}
+          \definecolor{blue}{RGB}{0,73,114}
+          \sectionfont{\color{blue}}
+          \subsectionfont{\color{blue}}
+          \subsubsectionfont{\color{blue}}
+          
+          \usepackage{titlesec}
+          \titlespacing\section{0pt}{10pt plus 5pt minus 5pt}{10pt plus 5pt minus 5pt}
+          \titlespacing\subsection{0pt}{5pt plus 2pt minus 2pt}{5pt plus 2pt minus 2pt}
+          \titlespacing\subsubsection{0pt}{5pt plus 2pt minus 2pt}{5pt plus 2pt minus 2pt}
+        
+bibliography: references.bib
+appendix-style: default
+license: "CC BY"
+---
+
+\title{\Large \color{blue} Court Decisions and Air Pollution \\ Evidence from Ten Million Penal Cases in India}
+    
+
+
+\date{\today}
+\maketitle
+
+\begin{abstract}\setstretch{1.0}
+
+\noindent This study explores the relationship between air pollution and judicial rulings. Although environmental factors should not affect judicial decisions, realists contend that there is substantial room for external factors to transpire into sentencing and sway human reasoning. We hypothesize that air pollution is one of these factors. Using Poisson panel models and instrumental variable techniques, we show that exposure leads to more convictions. We posit that this effect occurs because the impact of exposure on the central nervous system changes judges' cognitive performance and empathy. Back-of-the-envelope calculations suggest that decreasing average air pollution in India by one standard deviation would lead to up to 145,000 fewer convictions regarding currently active cases.
+
+\end{abstract}
+
+\vspace{5cm}
+
+\textbf{Keywords:} Judicial Hearings, Air Pollution, Fine Particulate Matter, Convictions, India, Remote Sensing
+
+\textbf{Jel:} R40, H42, O33, Q53
+
+
+# Introduction
+
+[]: # Importance and general introduction
+
+Although the traditional body of literature on air pollution focuses on direct health impacts [@graff2013environment], recent work suggests that exposure has broader implications like reduced worker productivity [@chang2016particulate], human capital formation [@ebenstein2016long], and cognitive capabilities [@powdthavee2020there]. Failing to consider these (harder-to-measure) sub-clinical effects can lead policymakers to underestimate the negative impacts of contaminated air on human societies [@aguilar2022air]. 
+
+[]: # Research question
+
+In this article, we explore the impact of air pollution on decision-making by examining its effects on judicial rulings. Even though judge decisions should be (in theory and by law) unaffected by biases and emotions [@eren2018emotional], realists contend that there is substantial room for external factors to transpire into sentencing and sway human reasoning [@danziger2011extraneous]. Our central argument relies on the notion that air pollution is one of these factors. 
+
+[]: # Contribution
+To the best of our knowledge, this is the first study of pollution-induced bias in the Indian judiciary and the first paper to find a significant effect of air pollution on judicial decisions. As such, we add to the growing literature suggesting that traditional cost-benefit analyses understate the actual costs of air pollution as they fail to incorporate its sub-clinical consequences. Specifically, we provide evidence that besides the environmental, health, and productivity costs of air pollution, exposure can affect high-stakes decision-making. Our contribution also includes the empirical analysis of air pollution effects in the context of limited data availability and low-quality pollution measures.
+
+[]: # Mechanism
+
+Exposure to air pollution can confound judicial choices because of its physiological and psychological effects on humans. Air pollutants alter the brain's chemistry and provoke systemic inflammation in the central nervous system, which leads to reduced cognitive performance, unstable risk preferences, fatigue, and a higher propensity to punish others [@lu2020air]. The effect of air pollution on sentencing can lean in either direction. On the one hand, judges could refrain from convicting individuals as a mitigation measure when pollution affects their focus and memory [@aguilar2022air]. On the other, judges may sentence more people if air pollution increases feelings of aggression, discomfort, and apathy [@lu2020air]. Understanding the direction of the effect is critical as judges make daily decisions with long-lasting impacts on citizens' lives [@ash2021measuring]. Hearings are additionally a relevant context to investigate the effect of air pollution on human behavior as judges' routine tasks involve characteristics shared across other professions like sensory awareness, decision-making, social interaction, and critical reasoning [@sarmiento2022air].
+
+[]: # Data
+
+To examine the relationship of interest, we consider the universe of criminal cases in the Republic of India from 2010 to 2018. Our data comes from over twenty million penal cases from the government E-Courts platform. We aggregate the individual observations into a panel of monthly cases and convictions per Indian subdistrict while building similar measures of corresponding temporal frequency and spatial resolution for air pollution and weather controls with remote sensing data from the North American and European Space Agencies [see @van2021monthly]. 
+
+[]: # Empirical strategy
+The core empirical strategy relies on high-dimensional fixed-effects Poisson pseudo-maximum-likelihood-estimator (PPMLE) panel models of the relationship between $PM_{2.5}$ and the number of monthly convictions per Indian subdistrict. We substantiate these estimates into causal evidence with a control function approach using strength-weighted atmospheric thermal inversions as a source of exogenous variation in air pollution.^[We also include a robustness specification with wind direction as an alternative instrument for $PM_{2.5}$.] 
+
+[]: # Results
+
+Empirical results suggest a positive relationship between $PM_{2.5}$ and convictions. Estimates from the fixed-effects model imply that a 10 $\mu g/m^3$ increase in monthly $PM_{2.5}$ concentrations raise the number of convicted individuals by $1.62$%. Causal estimates that rely entirely on the variation in pollution generated by thermal inversions indicate that the proposed impact is more sizable and stands at $7.24$%. 
+
+These effects are statistically and economically significant. Back-of-the-envelope calculations suggest that decreasing the average concentration of $PM_{2.5}$ by 10$\mu g/m^3$ (or 38% of a standard deviation) would decrease the number of convictions in currently active cases by as much as 145,000. Robustness exercises show that the influence of contaminated air is geographically homogeneous and primarily driven by extreme pollution episodes, i.e., periods of contamination within the top quintiles of the $PM_{2.5}$ distribution. 
+
+[]: # Policy Relevance and Conclusion
+Although evaluating the costs associated with these wrongful convictions is challenging, we estimate that decreasing $PM_{25}$ by 10 $\mu g/ m^3$ can lead to national annual savings of between ninety-six and four-hundred and four million dollars. For context, the Indian National Clean Air Programme (NCAP) aims to reduce $PM_{2.5}$ by up to 30% in 2024 cf. 2017. This decrease implies a fourteen $\mu g /m^3$ reduction when using the average 2017 concentration in our sample (47.5 $\mu g/ m^3$), meaning that the besides the health advantages of improved air quality associated with the NCAP, the decline in exposure would also lead to sub-clinical benefits such as productivity improvements [@chang2016particulate], lower crime rates [@bondy2020crime], and fewer convictions. It is also worth noting that aside from the fact that wrongful convictions have immense implications for the future of the concerned individual, they can also reduce citizens' confidence in the legal system [@norris2020criminal].
+
+[]: # Relationship between our findings and the literature (Adam)
+
+Our findings stand opposite to a similar analysis finding no impact of air pollution on sentence severity [@hou2020unpolluted]. We posit that this difference occurs because of discrepancies in the institutional setting and other factors such as building standards, air pollution control capabilities, and adaptation. For instance, there is evidence that the impact of environmental factors like temperature on sentencing decisions depends on the setting; e.g., while there is no evidence of temperature affecting Australian judges [@evans2021effect], recent work shows that temperature may affect conviction probabilities in India [@craigie2022temperature].^[Furthermore, it remains debated as to what extent judges are affected by temperature in the United States [E.g., @heyes2019temperature; @spamann2020no; @behrer2022heat].] In a similar context to ours, judges' productivity has also been found to be affected by air pollution in both China [@kahn2020air] and Mexico [@sarmiento2022air].
+
+
+[]: # Structure of the study
+We divide the rest of the study into eight sections. The *Literature Review* contextualizes our research within studies on the sub-clinical effects of air pollution and the effects of external factors transpiring into sentencing decisions. We divide the *Background Section* into three sub-sections; *Air Pollution in India*, introduces the reader to the current state of affairs regarding air pollution levels, sources, and policies in India; *Air Pollution and Human Behavior* outlines the current state of research on the relationship between air pollution and human behavior; and *The Indian Judiciary* describes the overall structure of the Indian judicial system. The *Data Section* presents the judicial and environmental data sources we use in our empirical model. In the *Theoretical Background*, we present a small theoretical model of the relationship between air pollution and convictions; this section also works as a bridge between the *Data Section* and the *Research Methodology*. *Research Methodology*, explains the empirical method we use to answer our research question, i.e., \textit{is there a statistically significant effect of air pollution (proxied by $PM_{2.5}$) on the sentencing behavior of judges?} We divide this section into two subsections; *Fixed Effects Model* and *Control Function Approach*. The *Results Section* presents the estimates from these two methods and provides econometric evidence on the relationship between $PM_{2.5}$ and sentencing in India. Finally, the *Discussion* and *Conclusion* *Sections* contextualize, summarise, and conclude the study.
+
+# Literature Review {#sec-literature}
+
+Exploring the sub-clinical costs of air pollution is critical to estimate its marginal effects [@chay2005does; @ebenstein2016long]. One stream of literature looking at \textit{sub-clinical} effects examines the relationship between exposure and worker productivity, with several studies providing evidence of exposure's negative impact on blue-collar workers and cognitively-taxing jobs [@he2019severe; @chang2019effect; @archsmith2018air]. 
+
+The effect of air pollution on cognitive abilities is quite relevant for modern societies. Late studies prove that air pollution lowers California reading and math exam scores [@zweig2009air; @zou2021unwatched], decreases performance in Chinese verbal tests [@zhang2018impact], and affects high-stake exam results in Brazil, Israel, Iran, England, and China [@ebenstein2016long; @carneiro2021effects; @amanzadeh2020impact; @roth2020effect; @zivin2020unintended]. @bedi2021particle show that $PM_{2.5}$ is especially relevant for fluid reasoning, and @powdthavee2020there calculate the influence of $NO_2$ and $PM_{10}$ on memory quality to be equivalent to ten years of aging when comparing the most to the least polluted areas of England. 
+
+Results from randomized control trials substantiate the above evidence, wherein people score higher in cognitive function tests if randomly allocated to better air quality [@allen2016associations]. Regarding effects on human decision-making, there is evidence of financial investors decreasing optimism following exposure to contaminated air [@dong2021air]; higher instances of ambiguity aversion and impatience when making decisions [@chew2021does]; and changes to risk preferences [@levy2011air; @bondy2020crime]. This study adds to the growing literature on the cognitive consequences of exposure to air pollution by providing empirical evidence on the effects of exposure on high-stakes decision-making. 
+
+Concerning studies looking at the determinants of judicial decisions, the current literature shows that sentencing can change along the lines of religion [@shayo2011judicial], race [@alesina2014test;  @arnold2018racial], and gender [@didwania2018gender; @anwar2019jury]. Regarding external factors, there is also evidence that they can be affected by news coverage [@lim2015judge], food break schedules [@danziger2011extraneous], and even the performance of local sports teams [@eren2018emotional; @chen2016morning]. In the context of environmental variables, while @heyes2019temperature relate higher temperatures to decreased favorable asylum decisions by US immigration judges,^[Although their finding is not without controversies, see @spamann2020no.] @evans2021effect find no evidence of temperature or $PM_{2.5}$ affecting sentencing when examining 2.8 million criminal court cases in Australia. Nevertheless, @evans2021effect point out that several factors may undermine the external validity of their findings, e.g., discrepancies in legal systems across countries, building standards, or climate control capabilities. For instance, their study's average daily particle concentration is 5.18 $\mu g/m^3$, 88.6/% lower than the average level in our sample.^[Climate control infrastructure may also differ between Indian courts and other countries [@chandrashekaran2021building].]
+
+Contrary to @evans2021effect, recent findings from @craigie2022temperature imply that temperatures can affect Indian judicial processes, implying that the harmful consequences of rising temperatures, or other environmental factors, may be more prominent in low- and middle-income countries. In a similar spirit to this paper, @kahn2020air and @sarmiento2022air find that polluted air affects the productivity of judicial hearings by extending the length of Chinese and Mexican decision processes. Concerning studies solely focusing on air pollution effects on sentencing, @hou2020unpolluted probed the universe of drug offense court decisions in five major Chinese cities between 2014 and 2015. The authors find that judges are unaffected by air pollution and temperature. However, they analyze sentence severity instead of convictions and measure air pollution with monitoring station data instead of remote sensing values. 
+
+Our study adds to the voluminous work on the biases of judicial choices by exploring the effects of one of the most relevant environmental externalities (air pollution) in one of the most polluted world regions (India). To the best of our knowledge, we are the first to look at the relationship between pollution and judges' behavior in India and the first to find an effect of exposure on sentencing. Our contribution also includes the empirical analysis of air pollution effects in the context of limited data availability and low-quality pollution measures.
+
+
+
+# Background
+
+## Air Pollution in India
+
+The World Health Organization (WHO) considers air pollution one of the most significant environmental risks to human health; in 2019, 99% of people lived in areas with exposure levels above air quality guidelines [@who2022air]. Globally, 4.2 million premature deaths are linked to outdoor air pollution, with approximately 90% of the burden occurring in low- and middle-income countries [@who2022air]. Averaged globally, particulate pollution alone decreases average life expectancy by 2.2 years compared to the counterfactual scenario of concentrations below WHO guidelines [@greenstone2018introducing].^[It is worth noting that exposure to air pollution disproportionately increases mortality of infants [@chay2003impact] and elders [@Deryugina2019mortality].]
+
+Aside from mortality, air pollution affects health through its effects on stroke, chronic respiratory diseases,^[Including chronic obstructive pulmonary disease, cough, shortness of breath, and wheezing.] reduced lung function, heart attacks,  hypertension, and lung cancer [@jiang2016air; @cao2020environmental; @manisalidis2020environmental; @shah2015short]. Exposure can result in systemic inflammation, oxidative stress, and the formation of blood clots, leading to cardiovascular conditions [@brook2010particulate; @munzel2018effects]. Further health consequences involve adverse birth outcomes such as preterm birth, low birth weight, and developmental issues linked to maternal exposure during pregnancy [@shah2011air; @stieb2012ambient]. Aside from the above, air pollution has also been linked to neurodevelopmental disorders, cognitive decline in older adults, and cancer [@power2016exposure; @costa2020effects; @turner2020outdoor].
+
+India has one of the worst ambient air qualities in the world [@iqairranking]. While WHO guidelines set a maximum level of 5 $\mu g/m^3$ of $PM_{2.5}$ to remain within healthy boundaries, an analysis by the Financial Times estimated that some Indian cities could have surmounted that threshold by over ten times in 2018 [@ftdirtyair2018; @who2022air]. Air pollution in India takes various shapes and forms, including PM pollution ($PM_{2.5}$ and $PM_{10}$), household indoor air pollution, sulfur dioxide ($SO_2$), nitrogen dioxide ($NO_2$), and ozone pollution ($O_3$) (@cpcb2023). Contaminants come from multiple sources, including diesel exhaust fumes, coal-powered thermal power plants, festival fireworks, municipal waste, household combustion, construction, industrial emissions, and crop burning [@gurjar2016air].
+
+
+High levels of contaminated air in India have significant socio-economic and health impacts. Figures from the Air Quality Life Index (AQLI) suggest that around 500 million people in Northern India could increase average life expectancy by at least 8.5 years if the region would decrease pollution levels to WHO guidelines [@chen2013evidence; @greenstone2018introducing]. A study on the Global Burden of Disease from 2019 attributed 1.67 million deaths in India to air pollution (17.8% of aggregate mortality that year), with around 1 million traced to ambient PM pollution [@pandey2021health]. The high levels of PM pollution in India also increase respiratory and cardiovascular morbidity with relevant consequences for productivity and healthcare system utilization [@cohen2017estimates; @balakrishnan2021].
+
+Air pollution also has significant repercussions on education. For instance, it depresses reading and mathematics outcomes, lowers academic attendance, and causes teacher absenteeism [@balakrishnan2021]. In 2021, excessive concentrations forced the Supreme Court of India to demand action from the government. Moreover, contaminated air in India brings about substantial direct economic losses. E.g., @pandey2021health estimate that the costs of air pollution surmounted 37 billion USD in 2019 alone, i.e., around 1.4% of the country’s Gross Domestic Product (GDP). It is also worth noting that the burden of air pollution is unevenly distributed across the population, with lower-income groups more exposed to unsafe levels [@garg2011pro]. Contaminated air is also very present in rural areas, where satellite figures suggest it may even be higher than in urban agglomerations, although it appears less apparent in governmental data due to measurement stations being relatively scarce cf. urban environments [@chatterjee2019indian].
+
+In response to high pollution levels, in 2019, India launched its first National Clean Air Programme (NCAP) financed by the Central Pollution Control Board (CPCB) to decrease $PM_{2.5}$ and $PM_{10}$  ambient air pollution in around one hundred cities by an estimate of 20-30% by 2024 cf. its baseline level [@cpcbnacmp]. The NCAP informs the government on air quality status, trends, and regulation performance. The government further strengthened its monitoring efforts by introducing the National Air Quality Index, which combines measures of eight pollutants into a single figure for public awareness of real-time air quality status [@cpcbnaqindex]. Aside from monitoring, government response measures involve a shift towards using compressed natural gas instead of traditional fuels and introducing the Bharat Stage VI (BS-VI) Emission Standards for vehicles and fuel beginning in April 2020 [@iea2023]. Decentralized solutions have been varied. Delhi’s Odd-Even Rule, launched in November 2017, determines the eligibility of car owners to drive on a given day based on the end digits of their license plates. Some local governments also tend to set higher vehicle emissions standards than nationwide ones, levy penalties for crop burning, and conduct strict oversight of road dust [@gurjar2016air]. An example is The Graded Response Action Plan (GRAP), introduced across the Delhi-NCR area, which imposes strict vehicle, construction activity, and industrial emissions controls during extreme pollution events [@cpcbgrap].
+
+
+## Air pollution and human behavior {#sec-ap-behavior}
+
+
+Although the best-known consequence of air pollution is its direct impact on mortality and morbidity [@deschenes2017defensive; @greenstone2018introducing], recent work explores its effects on other variables like human productivity, behavior, emotions, and cognitive capacity. 
+
+Air pollution can lead to cognitive impairment by decreasing blood flow and cell oxygenation [@lu2020air; @aguilar2022air]. Upon reaching the bloodstream, either through the lungs or directly from the air, contaminants interfere with the chemical composition of the central nervous system (CNS) via neuroinflammation and oxidative stress [@beurel2014inflammation]. Changes to the chemical composition of the CNS are especially relevant in context of the cerebral cortex because it plays a fundamental role in memory, insight, emotions, and consciousness [@bechara2000emotion; @peters2006translocation].
+
+Exposure to contaminated air further results in sensory irritation, which can lead to claustrophobia or mild tension [@chang2016particulate; @li2017particulate]. Polluted air may also provoke impatience, impede attention, make us more aggressive, and trigger tiredness [@anderson2002human; @aguilar2022air]. Even a judge's perception of air pollution can further increase anxiety as exposure triggers worries about personal health [@lu2018polluted], which in turn could result in elevated immoral and self-interested violent and nonviolent behavior [@kouchaki2015anxious; @barlett2014bad].
+
+Animal studies indicate that exposure can result in neurological impairments and hinder novel object recognition, spatial learning, memory, and performance [@win2008spatial; @win2014effects; @salvi2017psychological]. Animal trials also suggest that exposure can increase anxiety and depression by lowering bloodstream serotonin [@ehsanifar2019exposure; @murphy2013ozone], particularly relevant for inhibiting aggression and impulsive behavior in humans [@coccaro2011corticolimbic; @murphy2013ozone]. For instance, previous research have found a weak inverse link between serotonin, impulsive aggression, anger, and hostility [@frankle2005brain; @duke2013revisiting]. 
+
+
+Evidence from longitudinal studies shows that air pollution raises reports of psychological distress [@sass2017effects], depression [@szyszkowicz2009air], suicide attempts [@szyszkowicz2010air], and actual suicides [@yang2020ambient]. Moreover, @crockett2013serotonin link lower serotonin levels with increased eagerness to punish adversaries and a lower probability of accepting fair deals, both key elements in judicial decision making.
+
+
+
+## The Indian Judiciary
+
+India is a common law nation with legal principles and rules established through courts and parliamentary decisions [@cia_legal_2023]. Courts use common law to interpret and apply the provisions of the Constitution and other statutes.^[Common law evolves through the judicial process by relying on the principle of *stare decisis*, which requires courts to follow the decisions of higher courts in similar cases [@cornell_stare_decisis].] The judicial system includes the Supreme Court, High Courts, and Subordinate Courts. The Supreme Court and High Courts are the primary appeal institutions in the country [@const_124]. The Subordinate or District Courts are subordinate to the state High Court and comprise the lower judiciary [@times_sessions]. They include Civil Courts, Criminal or Session Courts, People's Courts, and Nyaya Panchayats [@ejustice_subordinate_2023].^[The Nyaya Panchayat is the most basic level of the Indian Judiciary and comprises a system of dispute resolution at the village level [@chakraborty2021role].] The number of Subordinate Courts per district depends on the number of cases and population; one district can have more than one court, and one court can attend more than one district.
+
+In 2001, the Supreme Court of India started the e-courts system to modernize the Indian judiciary and improve the efficiency of the courts [@e-courts]. The system is a digital platform that offers litigants, lawyers, and other stakeholders court-related services. The first phase of the e-courts project started in 2005 and involved the automation of the country's Supreme and High Courts. The second phase (launched in 2007) involved automating the Subordinate Courts in all states and union territories [@e-committee]. 
+
+The e-courts system aims to increase transparency, accountability, and efficiency in the Indian Judiciary by introducing several innovative technologies like video conferencing, digital evidence management, online filing, legal information management, and case lists [@e-committee]. The system functions in 3,256 court complexes, and as of 2021, it managed more than 1,360 million civil, criminal, and revenue cases [@e-committee2]. Essential for this study, the e-courts system provides data on cases' characteristics necessary to identify the relationship between exposure to air pollution and sentencing.
+
+
+# Data
+
+## Judicial Data
+Hearings data comes from the e-courts platform of the Indian Judiciary.^[We use the web-scrapped data of @ash2021measuring study on the effect of gender and religion on Indian Judicial decisions.] The data set has approximately twenty million criminal records across more than seven thousand Subordinate Courts between 2010 and 2018. The raw data contains the filing, registration, hearing, and decision date of all criminal processes; the name of the petitioner and the respondent; the act and section that identifies the felony; the position of the judge; and the final ruling.^[We present a sample of anonymized case data in @fig-SampleCourtData.] We restrict the data to criminal cases filed under the Indian Penal Code or the Code of Criminal Proceedings to distinguish between convicted and non-convicted individuals. We focus on criminal instead of civil cases to avoid ambiguity. For instance, it is hard to classify the outcome of most civil or commercial cases with a dichotomous decision rule. Likewise, if there is an agreement between parties, it is purely subjective whether or not it was a positive or negative outcome.
+
+In line with @ash2021measuring, we define \textit{convictions} as all those cases when the defendant is either convicted, pleads guilty, or ends up in prison. We could only classify one-third of court decisions as convicted or acquitted due to limitations in the raw data. However, we assume missing classifications as measurement errors unrelated to monthly variations in air pollution (a claim we substantiate in the empirical section with instrumental variable designs). We match the judicial rulings with air pollution at the subdistrict level by aggregating the count of cases to the relevant geographical resolution. This study concentrates on variation at the GADM-3 (subdistrict) level. The final judicial file is a monthly panel with the number of cases, convictions, acquittals, and decisions for each Indian subdistrict between 2010 and 2018.^[There are 28 states and 8 Union territories in India. Each state is divided into districts. There are a total of 718 districts. Depending on the region, each district is further divided into subdistricts (also known as taluks, tehsils, or mandals). The number of subdistricts varies within each state. As of 2019, there were more than 6,000 subdistricts in India. However, the number often varies because of administrative changes or reforms [@census_india].] 
+
+@tbl-TableDesc compiles key summary statistics for the monthly-aggregated judicial data. The data set contains 128,755 monthly sub-district observations. On average, there are one hundred and twenty-six monthly cases per subdistrict, seven convictions, thirty-five acquittals, and eighty-four processes where we cannot correctly classify the trial's outcome.
+
+
+
+```{r}
+#| label: tbl-TableDesc
+#| tbl-cap: Descriptive statistics on judicial hearings
+#| tbl-cap-location: top
+#| code-fold: true
+#| echo: false
+# Set the path 
+file = paste0(gsub("/05_submissions/eaere","", getwd()))
+# Load the data
+data = read_rds(paste0(file, "/02_gen/05_analysis_data/monthly_analysis.rds"))
+#
+data = mutate(data, cases = convicted + acquitted + decision)
+# Compute the descriptive statistics
+options(OutDec = ".")
+
+st(select(ungroup(data), cases, convicted, acquitted, decision), 
+         digits = 2, fixed.digits = T,
+         summ = c("mean(x)", "sd(x)", "min(x)", "max(x)"), 
+         summ.names = c("Mean", "Standard Deviation", "Minimum", "Maximum"), 
+         labels = c("Total Cases","Convicted", "Acquitted", "Unknown"), 
+   out = "return") %>% mutate(Maximum = comma(as.numeric(Maximum))) %>% kbl(booktabs = T, align = "lcccc") %>% 
+  kable_styling(latex_options = "HOLD_position", font_size = 8, 
+                position = "center") 
+ 
+```
+
+\begin{singlespace*}
+\scriptsize \textit{Notes: This table shows the mean, standard deviation, minimum, and maximum value of the count of monthly subdistrict penal cases in the Indian lower judiciary. \textit{Convictions} are all cases when the defendant is either convicted, pleads guilty, or ends up in prison.} \normalsize 
+\end{singlespace*}
+
+@fig-CasesHistogram shows the distribution of cases and convictions. In line with the count nature of the data, both distributions violate the standard normality assumption necessary for inference with traditional OLS estimators. Consequently, we estimate the effect with Poisson pseudo-maximum likelihood estimator (PPMLE) panel models, for they are consistent under heteroskedasticity, large shares of zero values, and overdispersion [see @wooldridge2010econometric]. In Section \ref{sec-methods}, we present the implementation of the PPMLE within our framework.
+
+```{r}
+#| label: fig-CasesHistogram
+#| fig-cap: Number of cases and convictions (histogram)
+#| fig-cap-location: top
+#| fig-height: 2.5
+#| fig-width: 7
+#| fig-pos: H
+#| code-fold: true
+#| echo: false
+# Set the path 
+file = paste0(gsub("/05_submissions/eaere","", getwd()))
+# Load the data
+data = read_rds(paste0(file, "/02_gen/05_analysis_data/monthly_analysis.rds")) |> ungroup()
+#
+data = mutate(data, cases = convicted + acquitted + decision)
+#
+plot = rbindlist(list("Number of Cases" = select(data, value = cases), 
+                      "Number of Convictions" = select(data, value = convicted)), idcol = "type")
+# Compute the descriptive statistics
+ggplot(plot |> group_by(type) |> filter(value < quantile(value, 0.99))) + 
+  geom_histogram(aes(x = value), fill = "black", bins = 30) + facet_wrap(~type, scales = "free") +
+  theme(panel.background = element_blank(), strip.background = element_blank(), 
+        axis.line = element_line(), strip.text = element_text(hjust = 0)) +
+  grids(axis = "y") +
+  labs(y = "", x = "Monthly cases per subdistrict")
+
+
+
+```
+
+\begin{singlespace*}
+\scriptsize \textit{Notes: These figures show the density distribution of the monthly number of cases and convictions in Indian subdistricts between 2010 and 2018. We define \textit{convictions} as all those cases when the defendant is either convicted, pleads guilty, or ends up in prison.} \normalsize 
+\end{singlespace*}
+
+@fig-CasesTimeSeries presents time series for the monthly average number of cases and convictions. In line with the growing digitalization of the judicial system, the number of reports increases during our sample period. We control for this trend by estimating the within-district variation in cases conditional on the year and month of observation.
+
+```{r}
+#| label: fig-CasesTimeSeries
+#| fig-cap: Number of cases and convictions -- twelve-month moving average Time Series
+#| fig-cap-location: top
+#| fig-height: 2.5
+#| fig-width: 7
+#| fig-pos: H
+#| code-fold: true
+#| echo: false
+#| warning: false
+# Set the path 
+file = paste0(gsub("/05_submissions/eaere","", getwd()))
+# Load the data
+data = read_rds(paste0(file, "/02_gen/05_analysis_data/monthly_analysis.rds"))
+#
+data = mutate(data, cases = convicted + acquitted + decision)
+#
+plot = rbindlist(list("Number of Cases (Ths.)" = select(data, year, month, value = cases), 
+                      "Number of Convictions (Ths)." = select(data, year, month, value = convicted)), idcol = "type")
+# 
+plot = mutate(plot, date = as.yearmon(paste(year, month, sep = "-"))) |> 
+  group_by(type) |> filter(value < quantile(value, 0.99)) |> 
+  group_by(date,type) |> summarise(value = sum(value, na.rm = t)) |> ungroup() |> 
+  mutate(RolAvg = rollmean(value, k = 12, fill = NA)) |> filter(is.na(RolAvg) == F)
+# Compute the descriptive statistics
+ggplot(plot) +
+  geom_line(aes(y = RolAvg/1000, x = date)) + 
+  facet_wrap(~type, scales = "free") +
+  theme(panel.background = element_blank(), strip.background = element_blank(), 
+        axis.line = element_line(), strip.text = element_text(hjust = 0)) +
+  grids(axis = "y") +
+  labs(y = "", x = "")
+
+
+
+```
+
+\begin{singlespace*}
+\scriptsize \textit{Notes: Time series on the average number of monthly cases and convictions in Indian subdistricts between 2010 and 2018. We define \textit{convictions} as all those cases when the defendant is either convicted, pleads guilty, or ends up in prison.} \normalsize 
+\end{singlespace*}
+
+A particular worry is the quality of the underlying legal data. Entry errors and omitted observations from small or remote districts are possible and can bias our results in unexpected ways[@rao2019judges]. Moreover, the basic information on the e-courts platform only allows for identifying the hearing outcome for one-third of the cases. Still, entry errors and missed recordings are not an issue as long as they are unrelated to air pollution [@hausman2001mismeasured]. In the empirical section, we deal with this potential measurement-error bias by instrumenting for air pollution with thermal inversions.
+
+## Air pollution Data
+
+Acquiring reliable pollution values poses an additional challenge. India's Central Pollution Control Board (CPCB) only provides continuous monitoring station-level data as of 2016 for a small subset of urban districts. Moreover, the CPCB claims that because of inconsistencies in the measurement and data curation process, air pollution measures are only indicative and subject to biases [@cpcbnacmp]. As CPCB only measures air pollution on a subset of urban districts, covers less than half of our sample period, and is prone to bias, we use representative $PM_{2.5}$ estimates from state-of-the-art satellite measurements [@van2021monthly].^[Although its use is widespread within the natural sciences, remote sensing is becoming more popular in the social sciences [@fowlie2019bringing].] 
+
+Satellite data is advantageous in contexts like India with limited data availability and it can help mitigate the risks of strategic behavior or capacity constraints by environmental authorities [@zou2021unwatched]. Furthermore, previous research has called into question the representatives of papers relying on measuring stations as they often restrict their study's sample because of a lack of spatially resolved data [@kloog2013long; @manisalidis2020environmental].
+
+Satellite measures come from monthly $PM_{2.5}$ estimates constructed by @van2021monthly using aerosol optical depth (AOD) values from NASA MODIS, MISR, and SeaWiFS instruments. The authors combine these data sources alongside the GEOS-Chem chemical transport model and Geographically Weighted Regression (GWR) to create a global 0.01 degrees grid of $PM_{2.5}$ measures. Figure \ref{fig: MapAcag} shows the average ACAG $PM_{2.5}$ value and population density across Indian subdistricts. Air pollution is higher in the Indo-Gangetic plain (north of the country) and large Urban areas like Mumbai, Calcutta, and Ahmedabad. The Indo-Gangetic plain is a highly fertile area between the Indus, Ganges, and Brahmaputra rivers. It is one of the more densely populated areas on the planet, with close to seven hundred million persons inhabiting less than one-eighth of the area of the continental United States. According to late estimates, decreasing the average level of $PM_{2.5}$ in the Indo-Gangetic Plain to WHO guidelines could increase average regional life expectancy for up to seven years [@Greenstone2022].
+
+\begin{figure}[!h]
+\begin{minipage}{.5\textwidth}
+       \centering
+       \caption*{A) $PM_{2.5}$}
+    \includegraphics[width = \textwidth]{01_images/MapIndia.png}
+\end{minipage}
+\begin{minipage}{.5\textwidth}
+       \centering
+        \caption*{B) Population Density}
+    \includegraphics[width = \textwidth]{01_images/MapIndiaPD.png}
+\end{minipage}
+
+\vspace{0.5cm}
+
+\begin{singlespace*}
+\scriptsize \textit{Notes: The left panel shows average monthly $PM_{2.5}$ concentrations across all Indian subdistricts. The data comes from monthly $PM_{2.5}$ estimates constructed by \citet{van2021monthly} using aerosol optical depth (AOD) values from NASA MODIS, MISR, and SeaWiFS instruments. The right panel shows population density in inhabitants per square kilometer. The data comes from the Population Division of the Department of Economic and Social Affairs of the United Nations Secretariat \citep{un_population}.} \normalsize 
+\end{singlespace*}
+
+\vspace{0.5cm}
+
+\caption{Spatial distribution of $PM_{2.5}$ and population}
+\label{fig: MapAcag}
+
+\end{figure}
+
+## Weather Data
+
+Weather can affect individual behavior and the concentration of air pollution [@deschenes2011climate; @graff2013environment; @ranson2014crime; @blakeslee2018weather]. Failing to account for its effect on judicial decisions and $PM_{2.5}$ could induce omitted variable bias or increase the uncertainty of our point estimates. We obtain weather controls from the ERA5-Land reanalysis data set (AgERA5) curated by the European Centre for Medium-Term Weather Forecasting (ECMWF) and measured from the Copernicus satellite [@hersbach2020era5]. 
+
+AgERA5 provides high-resolution daily imagery (10x10 Km) of temperature, precipitation flux, wind speed, and wind direction.^[ERA5 reports the eastward (u10) and northward (v10) wind components. We combine these components to retrieve wind speed and direction by following ECMWF guidelines in constructing monthly wind direction and wind speed measures for each subdistrict.] Figure \ref{fig: WeatherMaps} shows the spatial distribution of average temperature and precipitation over India. Temperatures are higher in the Northwests (Rajasthan and Gujarat) and Southeast (Andhra Pradesh and Tamil Nadu) of the country and lower in the Western Gahti and Himalaya Mountains.^[The Western Gahti range crosses the western part of the southern tip of the country.] For precipitation, rain is low in the Thar Desert to the Northwest and significantly higher in the Northeastern region and Western coast.
+
+\begin{figure}[!h]
+\begin{minipage}{.5\textwidth}
+       \centering
+       \caption*{A) Average temperature}
+    \includegraphics[width = \textwidth]{01_images/MapIndiaTmp.png}
+\end{minipage}
+\begin{minipage}{.5\textwidth}
+       \centering
+        \caption*{B) Precipitation Flux}
+    \includegraphics[width = \textwidth]{01_images/MapIndiaRain.png}
+\end{minipage}
+
+\vspace{0.5cm}
+
+\begin{singlespace*}
+\scriptsize \textit{Notes: The left panel shows the average monthly temperature, and the right panel average precipitation flux across all Indian subdistricts. The data comes from ERA5-Land reanalysis data set (AgERA5) curated by the European Centre for Medium-Term Weather Forecasting (ECMWF) and measured from the Copernicus satellite.} \normalsize 
+\end{singlespace*}
+
+\vspace{0.5cm}
+
+\caption{Spatial distribution of weather controls}
+\label{fig: WeatherMaps}
+\end{figure}
+
+
+
+@tbl-TableDescWeather presents summary statistics for the $PM_{2.5}$ measures and weather controls. The average and maximum monthly $PM_{2.5}$ concentration is 45.55 $\mu g/m^3$ (SD 26.65) and 308 $\mu g/m^3$. This maximum level is equivalent to an average air quality index higher than 300 units, according to the AQI of the US Environmental Protection Agency (EPA). For the weather controls, there is an average temperature of 25.4 degrees Celsius with a standard deviation of 4.87 degrees and an average precipitation flux of 3.28 $mm^3/mm^2$.
+
+```{r}
+#| label: tbl-TableDescWeather
+#| tbl-cap: Descriptive statistics for fine particulate matter and weather controls at the subdistrict level
+#| tbl-cap-location: top
+#| code-fold: true
+#| echo: false
+# Set the path 
+file = paste0(gsub("/05_submissions/eaere","", getwd()))
+# Load the data
+data = read_rds(paste0(file, "/02_gen/05_analysis_data/monthly_analysis.rds"))
+#
+data = mutate(data, cases = convicted + acquitted + decision)
+# Compute the descriptive statistics
+options(OutDec = ".")
+
+st(select(ungroup(data), acag_pm25, temp, precipflux), 
+         digits = 2, fixed.digits = T,
+         summ = c("notNA(x)", "mean(x)", "sd(x)", "min(x)", "max(x)"), 
+         summ.names = c("Observations","Mean", "Standard Deviation", "Minimum", "Maximum"), 
+         labels = c("Fine Particulate Matter", "Temperature", "Precipitation"), 
+   out = "return") %>% mutate(Observations = comma(as.numeric(Observations))) %>% 
+  kbl(booktabs = T, align = "lccccc") %>% 
+  kable_styling(latex_options = "HOLD_position", font_size = 8) 
+ 
+```
+
+\vspace{0.5cm}
+
+\begin{singlespace*}
+\scriptsize \textit{Notes: The table shows average monthly $PM_{2.5}$ concentrations in India between 2010 and 2018. The data comes from monthly $PM_{2.5}$ estimates constructed by \citet{van2021monthly} using aerosol optical depth (AOD) values from NASA MODIS, MISR, and SeaWiFS instruments. Weather data comes from the ERA5-Land reanalysis data set (AgERA5) curated by the European Center for Medium-Term Weather Forecasting (ECMWF) and measured from the Copernicus satellite. Temperature in degree Celsius and precipitation in $mm^3/mm^2$} \normalsize 
+\end{singlespace*}
+
+\vspace{0.5cm}
+
+
+In line with previous studies using thermal inversions to instrument for air pollution, we estimate the weighted number of thermal inversions within a month by computing the weighted sum of daily temperature differences (at 1:30 am) between 925 hPa and 1000hPa [@klauber2020effects; @jans2018economic; @sager2019estimating]. The left panel of figure \ref{fig: InvMaps} shows the number of months with temperature inversions between 2010 and 2018 across India. Thermal inversions are common events in the states of Gujarat and Surat, the Indo-Gangetic plain, and the east coast of the country. The right panel of figure \ref{fig: InvMaps} shows the relationship between thermal inversions and average $PM_{2.5}$. Following previous studies showing an increasing relationship between thermal inversions and air pollution, stronger inversions lead to higher $PM_{2.5}$ values.
+
+\begin{figure}[!h]
+\begin{minipage}{.5\textwidth}
+       \centering
+       \caption*{A) Number of Thermal Inversions}
+    \includegraphics[width = \textwidth]{01_images/MapIndiaInv.png}
+\end{minipage}
+\begin{minipage}{.5\textwidth}
+       \centering
+        \caption*{B) Thermal Inversions and $PM_{2.5}$}
+    \includegraphics[width = \textwidth]{01_images/InvLine.png}
+\end{minipage}
+
+\vspace{0.5cm}
+
+\begin{singlespace*}
+\scriptsize \textit{Notes: The left panel shows the number of thermal inversions per Indian subdistrict between 2010 and 2018. We define \textit{thermal inversions} as months with a positive weighted sum of daily temperature differences at 1:30 am between 925 and 1000 hectopascals (hPa). The temperature data comes from the ERA5-Land reanalysis data set (AgERA5) curated by the European Centre for Medium-Term Weather Forecasting (ECMWF) and measured from the Copernicus satellite. The right panel shows the relationship between thermal inversions and $PM_{2.5}$. The x-axis shows the thermal inversion decile and the y-axis shows the average $PM_{2.5}$ for that decile. The decile-specific standard deviation of $PM_{2.5}$ is in parenthesis.} \normalsize 
+\end{singlespace*}
+
+\vspace{0.5cm}
+
+\caption{Thermal Inversions in India and their relationship with $PM_{2.5}$}
+\label{fig: InvMaps}
+\end{figure}
+
+
+# Theoretical Background 
+
+Analyzing if external factors affect the judicial process is a long-discussed legal issue with two leading schools of thought; legal formalism and legal realism [@tampubolon2023judicial]. Legal formalism assumes that judges make decisions by systematically applying facts and arguments within the legal framework [@aiken2016putting]. Legal realism contends that, although the law and previous rules are relevant, other factors like lunch breaks, religion, political views, race, or the environment can influence judicial rulings [@bator2020law]. Most realists contend that these external factors are more important than the law by arguing that judges use heuristics and biases to make decisions and only use the law to support their rulings. For instance, eighteenth-century US Supreme Court Judge Oliver Holmes defended that, besides legal reasoning, social and psychological factors are relevant when applying the law [@aletras2016predicting]. 
+
+Diagram \ref{fig: digram_legal_schools} shows the main difference between legal formalism and legal realism. While in legal formalism, rulings depend on facts, arguments, the law, and precedence, in legal realism, they depend on heuristics, biases, and external factors. In legal realism, the judges only use the law and information of preceding cases to justify their ruling.
+
+\begin{figure}[!h]
+\begin{center}
+\includegraphics{01_images/diagram_fomal_ral.png}
+\end{center}
+\vspace{0.5cm}
+
+\begin{singlespace*}
+\scriptsize \textit{Notes: In legal formalism, a case's final ruling depends on three factors; facts and arguments, the law, and precedence. In legal realism,  the law and precedence are only used to justify the ruling, which depends on heuristics, biases, and external factors. The figures in the right-hand panel represent cognitive abilities, air pollution, anchoring, religious biases, weather, and lunch breaks in clockwise order.} \normalsize 
+\end{singlespace*}
+
+\vspace{0.5cm}
+
+\caption{Legal Formalism and Legal Realism}
+\label{fig: digram_legal_schools}
+\end{figure}
+
+
+
+The discussion between both groups affects the basic principles of constitutional democracy. In principle, the constitution and national laws safeguard impartial rulings and leave no room for biases and external factors to transpire into sentencing [@tampubolon2023judicial]. If legal realism is correct and external factors are the main determinants of judicial decisions, it could lead to a generalized lack of trust in the system's impartiality with relevant consequences for the rule of law in modern democracies.
+
+Although previous research has found consistent evidence of external factors like lunch breaks [@danziger2011extraneous], religion [@shayo2011judicial], and gender [@anwar2019jury] affecting sentencing decisions, no in-lab experiments or randomized control trials have yet unquestionably proven their existence [@tampubolon2023judicial]. Most studies rely on observational data or natural experiments due to the ethical challenges of randomizing external factors like air pollution across judges or the reluctance of judicial authorities to test the impartiality of the system. 
+
+Our hypothesis that air pollution affects sentencing aligns with legal realism. We support this hypothesis by providing evidence on the effects of air pollution on human behavior with relevant consequences for cognitive capacity [@aguilar2022air], aggression [@frankle2005brain], and risk preferences [@levy2011air] (see @sec-ap-behavior). Diagram \ref{fig: digram_legal_realism} presents the decision-making process for penal cases under legal realism. In it, a plethora of external factors like race, anchoring, and temperature affect the probability of convictions. Of these, we concentrate on the effects of air pollution. I.e., we test if air pollution affects convictions through its impact on human behavior and cognition.
+
+\begin{figure}[!h]
+ \begin{center}
+    \includegraphics{01_images/diagram_realists.png}
+   \end{center}
+   
+    \vspace{0.5cm}
+
+\begin{singlespace*}
+\scriptsize \textit{Notes: Decision-making process for penal cases under legal realism. There are many external factors like race, anchoring, and temperature between the case and the conviction or sentencing decision. Of these, we concentrate on the effects of air pollution. I.e., we test if air pollution affects convictions through its impact on human behavior and cognition.} \normalsize 
+\end{singlespace*}
+
+\vspace{0.5cm}
+\caption{Legal decision making according to legal realism}
+\label{fig: digram_legal_realism}
+
+
+\end{figure}
+
+
+
+
+From a mathematical perspective, while formalists believe that the probability of sentencing is only a function of the felony and legal characteristics of a case, realists would argue that external factors like weather, air pollution, lunch breaks, and judge characteristics are also relevant. @eq-prob-conv presents the probability of conviction $[P(Convicted = 1)]$ for individual $i$ at time $t$ as a function of a matrix of $n$ case characteristics ($C_{it}$) and $k$ external factors like biases, weather, air pollution, or news coverage ($X_{it}$).
+
+$$
+ f(C_{it}, X_{it}) =  P(Convicted = 1)_{it} \quad \vert \quad \begin{cases}
+      Formalism & \frac{\partial P(Convicted = 1)_{it})}{\partial X^k_{it}} =  0 \quad \text{for all k} \\
+      Realism & \frac{\partial P(Convicted = 1)_{it})}{\partial X^k_{it}} \neq  0 \quad \text{for any k}\\
+    \end{cases}  
+$${#eq-prob-conv}
+
+Formalists contend that the partial derivative of the $k$ variables in $X_{it}$ is equal to zero and that the only relevant sentencing factors are the case characteristics and preceding rulings. However, as mentioned in @sec-literature, several studies have provided evidence of external factors like religion, gender, news coverage, and temperature affecting the conviction probability. To relate @eq-prob-conv into our short-form specification, we aggregate all convictions in subdistrict $i$ happening in month $t$ such that the total number of convictions for an entire subdistrict $s$ and period $t$ is a Poisson distributed count variable of the form:
+
+$$
+Convictions_{st} = \big[f(C_{st}, X_{st}) = \sum_i (Conviction = 1)_{st}\big] \\ 
+$$
+\vspace{-0.5cm}
+$$
+\quad \forall \quad \lambda = E(Convictions_{st}) = Var(Convictions_{rt})
+$$
+
+This Poisson count variable is a function of case characteristics ($C_{it}$) and external factors ($X_{it}$), including judge biases, heuristics, weather, temperature, and lunch breaks. As such, we can estimate the effect of air pollution on the number of monthly convictions for subdistrict $s$ as a function of case characteristics, external factors, and air pollution ($P_{st}$) according to:
+
+$$
+exp[f(C_{st}  +  X_{st} + P_{st})] = Convictions_{st}
+$${#eq-theory-reduced-form}
+
+As long as we provide evidence that $\frac{\partial Convictions_{st}}{\partial P_{st}} \neq  0$, we can confirm that there is a relationship between air pollution and sentencing. In the following section, we present the empirical methodology we use to identify $\frac{\partial Convictions_{st}}{\partial P_{st}}$ with fixed effects Poisson estimators and instrumental variable techniques.
+
+# Research Methodology {#sec-methods}
+
+## Fixed Effects Model
+
+A wide range of possible (observable and unobservable) confounding factors can affect the estimates of air pollution on convictions. For instance, traffic contributes to air pollution and is a possible determinant of individuals' attitudes and behavior [@fenger1999urban], for judges stuck in traffic during their work commute can be more aggressive and stressed before work [@stokols1978traffic].^[Furthermore, traffic-related noise can further lead to higher anxiety and lower productivity [@szalma2011noise; @Dean2019].] Other potential sources of omitted variable bias (OVB)  relate to cross-sectional differences across subdistricts, discrepancies in the legal capacity of different courthouses [@ash2021measuring], or public policies affecting air pollution and convictions as industrial emissions regulation, gasoline taxes, or road-space rationing mechanisms.
+
+While reverse causality is an unlikely problem since convictions should not change air pollution, there may be issues related to measurement error (ME). For instance, we do not know the actual exposure of judges to air pollution. Instead, we can only measure the average concentration in their subdistrict. Still, as is typical with studies on air pollution, we rely on average concentration to approximate real exposure values [@aguilar2022air]. Another issue relates to measuring errors from administrative and judicial workers. However, as long as these measurement errors are orthogonal to air pollution at the time of the hearing, they should not affect our point estimates. 
+
+A skeptic may argue that there is no reason why outdoor air pollution would affect indoor activities. However, there is evidence that contaminants can penetrate indoor settings even in climate control facilities [@thatcher1995deposition; @vette2001characterization; @scheepers2017chemical]. For instance, $PM_{2.5}$ outdoor-indoor ratio can be as high as 70\% to 100\% [@thatcher1995deposition; @vette2001characterization], with some studies even suggesting that most exposure to ambient $PM_{2.5}$ may occur within indoor environments [@martins2018impact; @krebs2021using]. 
+
+Another thread to the empirical strategy is if less-skilled judges come to work on more polluted days and have a different probability of convicting individuals. In the same way, if the Indian judicial system scheduled less-serious crimes for months with less pollution, we would again run into spurious correlations. Case sorting is unlikely to affect our estimates as judges (or other parties) have no inference on the assignment of cases [@ash2021measuring]. The Indian judiciary assigns cases to judges through a centrally determined set of rules that leave no space for self-selection [@ash2021measuring]. Scheduling cases with vast temporal anticipation also ensures independence between the number of convictions and the impacts of air pollution on criminality [@burkhardt2019effect]. Finally, delayed case timing further guarantees that one cannot target a specific judge and expect to know the level of air pollution during the hearing [@ash2021measuring].
+
+People consider air quality an amenity relevant to housing decisions [@chay2005does]. Better judges may self-select to work in cleaner regions. Subdistricts with more economic activity (and air pollution) may also attract more skilled legal workers. Two factors reduce residential sorting concerns. First, the judicial system force judges to stay between two and three years in each courtroom at the time [@ash2021measuring]. Second, even if they move, they are unlikely to get their location of preference [@rao2019judges]. Lastly, short-term avoidance behavior like closing windows or wearing masks can also confound our estimates; however, there is little scope for adaptation as individuals cannot entirely escape from $PM_{2.5}$ due to its ability to penetrate indoors [@aqlipm].^[Even if judges adapt to air pollution by decreasing their exposure during the hearing, our point estimates would capture the intention to treat, e.g., the effect of air pollution on the sentencing decision net of adaptation.]
+
+The baseline specification uses high-dimensional fixed-effects Poisson pseudo-maximum likelihood estimator panel models (from now on PPMLE) to estimate the effects of variations in $PM_{2.5}$ on the number of subdistrict judicial convictions [@hausman1984econometric; @wooldridge1999quasi]. We use PPMLEs because the count nature of the dependent variable violates the Ordinary Least Squares (OLS) assumptions of homoskedasticity and normally distributed errors. Panel data methods for count data are attractive in terms of statistical properties when the cross-sectional dimension (subdistricts) is much larger than the time dimension (month-years) [@wooldridge1999quasi]. Moreover, even if the total number of convictions does not perfectly follow a Poisson distribution because of overdispersion, estimating such a model via quasi-MLE yields unbiased, consistent, and asymptotically normal coefficients [@wooldridge1999quasi; @azoulay2010superstar; @burkhardt2019effect].
+
+
+Our central assumption is that conditional on various fixed effects and weather covariates, $PM_{2.5}$ concentrations are exogenous to court rulings. This conditional fixed-effects quasi-maximum likelihood estimator nets out (in an additive fashion) unobserved heterogeneity across courthouses, months, and years [@lin2019testing]. As such, it decreases identification concerns regarding the effect of cross-sectional and seasonal unobservables on our point estimates. 
+
+The preferred baseline specification takes the following form:
+
+$$
+C_{st} = exp\big[\beta PM2.5_{st} + \Phi W_{st} + \lambda_{s} + \Omega_t  \big] +  \epsilon_{st}
+$$ {#eq-pmle}
+
+In it, $C_{st}$ is the number of convictions at subdistrict $s$ at time $t$; $PM2.5_{st}$ the average $PM_{2.5}$ concentration; and $\beta$ the coefficient of interest capturing the impact of a unit (1 $\mu g /m ^3$) increase in $PM_{2.5}$ on the log difference of convictions. We augment the specification with subdistrict ($\lambda_s$) and temporal ($\Omega_t$) fixed effects to capture observed and unobserved subdistrict and temporal heterogeneity. These fixed effects allow the model to account for seasonality, time trends, and cross-sectional differences across subdistricts. As discussed by [@burkhardt2019effect], month fixed effects isolate confounders like allergens, influenza, or other seasonal conditions. $W_{st}$ is a matrix of weather controls we use to improve the precision of the econometric design and avoid biased estimates arising from the influence of weather on air pollution and cognitive performance [@ranson2014crime; @heyes2019temperature]. For example, rain affects the presence of $PM_{2.5}$ in the air, wind displaces it, and temperature defines human behavior and the efficiency of internal combustion engines [@graff2013environment]. For the preferred specification, we remain agnostic about the potential effect of weather on convictions by nonparametrically controlling for temperature and precipitation with decile bin indicators of average levels.  
+
+The estimated coefficients come from within-subdistrict changes in convictions conditional on seasonality (month fixed effects), the year of observation (year fixed effects), and weather controls.^[The baseline model does not involve variables measuring avoidance or mitigation behaviors; this is not a problem from an econometric point of view, as avoidance tends to be post-exposure [@aguilar2022air]. Including it in the regression could result in spurious correlations between the causal and dependent variables, as they are both influenced by treatment [@angrist2010credibility].] Standard errors, $\epsilon_{st}$, are two-way clustered at the subdistrict-year level to address within subdistrict correlation in the error term and autocorrelation over time.^[ Cluster-robust standard errors also correct for the over-dispersion of Poisson models [@wooldridge1999quasi].]
+
+Notably, the inclusion of subdistrict-fixed effects decreases concerns about policy changes at the national level affecting our point estimates as we are estimating the effect from within-district variation. I.e., any change at the national level would not affect the estimates on the relationship between exposure and convictions as they are captured by the year, month, or year-by-month fixed effects. Regarding state or district policies, we further decrease the possibility of policy-related OVB by including a more restrictive specification with year-by-district and month-by-district fixed effects that accounts for all policy changes within a year in the same district. Despite the fact that most policy interventions in India occur at the national, state, or district levels, local policies can still affect our coefficients if they are correlated (or determinants) with (of) pollution and convictions. The Fixed Effects strategy does not allow us to control for this source of omitted variable bias effectively. However, we account for it with the control-function instrumental-variable approach we present in @sec-iv.
+
+We explore the robustness of the baseline specification using a selection of possible fixed effects, weather controls, and clustering specifications. For instance, besides the baseline model with year and month fixed effects, we estimate more flexible specifications with year-by-month, year-by-district, and month-by-district fixed effects. These new specifications allow us to capture shocks common to all subdistricts in a district (e.g., state and district legal or environmental policies). Further robustness exercises include looking at non-linearities with nonparametric specifications of $PM_{2.5}$ and examining if air pollution affects the total number of cases and not only convictions. We also present a model including the first and second pre-treatment $PM_{2.5}$ lag as done by @ebenstein2016long and @burkhardt2019effect to dispel worries regarding the econometric specification.
+
+## Control Function (Instrumental Variable) Approach {#sec-iv}
+
+Even though our baseline specification can provide credible estimates on the effects of $PM_{2.5}$ on judicial hearings, there is still the possibility of measuring error (ME) and omitted variable bias (OVB) affecting our results. To reduce concerns regarding ME and OVB, we rely on a control function (instrumental variable) approach that is easier to implement in the presence of nonlinear Poisson models [@lin2019testing; @burkhardt2019effect; @klauber2020effects]. The first stage of the control function specification is an OLS estimation of the endogenous variable. In the second stage, we use the previously discussed PPMLE with the fitted values of the first stage as the outcome variable [@lin2019testing]. Although this *control function* approach differs from a traditional Two-Stage Least Squares (2SLS) in that the second stage is nonlinear and estimated via pseudo-MLE instead of OLS, the intuition remains similar.
+
+We use strength-weighted atmospheric thermal inversions to instrument for $PM_{2.5}$. Thermal inversions shift the expected behavior of temperature in the troposphere. Under normal conditions, the air cools with altitude; however, during an inversion, warm air rises and acts as a lid over colder layers. This \textit{lid-effect} traps air pollution by avoiding its dispersion into the upper atmosphere, increasing the concentration of air pollutants, and acting as a natural experiment that creates exogenous spatio-temporal variation in exposure [@sager2019estimating]. Similar to previous studies [see @sager2019estimating; @klauber2020effects], we aggregate daily thermal inversions to monthly frequencies by summing the number of daily inversions in a given subdistrict weighted by their intensity, i.e., the continuous difference between the temperature at 925 and 1000 hPa. While constructing the instrument, we also allow variation in its effects across states by interacting the intensity of inversions with state indicator variables.
+
+Even though first-stage regressions confirm that thermal inversions increase $PM_{2.5}$ values, there is the possibility that inversions correlate with $\epsilon$ through weather conditions affecting both convictions and pollution [@ranson2014crime; @heyes2016effect]. We explicitly control for this by including a set of different specifications of weather covariates in the regression analysis and robustness exercises. There is also the possibility of topography playing a role in shaping inversions [@sager2019estimating]. However, it is arguably fixed over time and captured by the subdistrict fixed effects. Concerning other possible associations between inversions and judges' behavior, there is no evidence that they could directly influence health, well-being, or cognitive performance [@sager2019estimating; @klauber2020effects]. 
+
+
+The primary IV assumption is that, after netting out the fixed effects and conditioning on meteorological conditions, thermal inversions can only affect the number of convictions through their influence on air pollution. However, as pointed out by @klauber2020effects, weather conditions behind thermal inversions can lead to more individuals using cars or staying at home. For this reason (and following previous studies), we use thermal inversions at 1:30 am local time [@jans2018economic; @sager2019estimating], which also helps circumvent the fact that daytime inversions may be visible and change human behavior [@sager2019estimating]. 
+
+
+We interpret the point estimate as a local average treatment effect (LATE) on the population of compliers, i.e., subdistricts with variation in thermal inversions and a monotonic relationship between inversions and $PM_{2.5}$. @eq-iv1 presents the first stage of the IV strategy. In it, $inv_{st}$ is a vector of quintile bins of state-specific (strength-weighted) thermal inversions. Although we use the same control variables as the previous specifications, we estimate @eq-iv1 with OLS.
+
+$$
+\hat{PM2.5_{st}}= \delta Inv_{st} \times State_s + \Phi W_{st} + \lambda_{s} + \Omega_t +\eta_{st}
+$$ {#eq-iv1}  
+
+In the second stage (@eq-iv2), we use the fitted values ($\hat{PM2.5_{st}}$) from the above regression as a proxy for actual $PM_{2.5}$. Besides using the fitted $PM_{2.5}$ instead of actual measures, we also rely on nonparametric bootstrapped standard errors to account for the fact that we use fitted values as opposed to actual $PM_{2.5}$ in the estimation [@lin2019testing].
+
+$$
+C_{st} = exp\big[\beta \hat{PM2.5_{st}} + \Phi W_{st} + \lambda_{s} + \Omega_t  \big] +  \epsilon_{st}
+$$ {#eq-iv2}  
+
+
+The control function approach allows us to reduce concerns regarding the influence of omitted variable bias in our point estimates. Specifically, we account for the impact of traffic, economic, and policy confounders affecting air pollution and convictions by identifying our coefficients from the exogenous variation in air pollution due to thermal inversions. The core assumption is that, as long as thermal inversions remain orthogonal to these sources of bias, the estimates from the control function approach, though local, would remain unbiased. For instance, there is no apparent reason to think that drivers (or policymakers) would change their driving patterns (or policies) because of the temperature difference between 925 and 1000 hPa at 1:30 am.
+
+
+# Results
+
+## Fixed Effects Model
+@tbl-AcagPoissonFEs presents the results of the PPMLE panel model across four specifications: (1) only includes subdistrict fixed effects; (2) accounts for seasonality through year and month fixed effects; (3) includes weather controls in discrete temperature and precipitation bins; and (4) examines a more flexible specification with year-by-month fixed effects. To simplify the interpretation of coefficients, we transform the value of $\beta$ to $[exp(\beta) -1] \times 1000$ and interpret it as the percentage increase in the number of convictions because of a ten units increase in $PM_{2.5}$.
+
+```{r}
+#| label: tbl-AcagPoissonFEs
+#| tbl-cap: \scriptsize Effects of PM25 on judicial convictions in India
+#| tbl-cap-location: top
+#| echo: false
+# Set the path 
+file = paste0(gsub("/05_submissions/eaere","", getwd()))
+# Load the results 
+tab = read_rds(paste0(file, "/02_gen/06_results/poisson_fe.rds"))
+
+# Construct a data frame of fixed effects
+fe = rbind(`District FEs` = c(rep("Yes", 4)), 
+           `Year FEs` = c(rep("", 1), rep("Yes", 3)), 
+           `Month FEs` = c(rep("", 1), rep("Yes", 3)), 
+           `Weather Controls` = c(rep("", 2), rep("Yes", 2)), 
+           `Year by Month FEs` = c(rep("", 3), rep("Yes", 1))) %>%
+  as.data.frame(.) %>% setNames(., names(tab))
+
+# Construct the data frame with the results
+tab = rbind(tab, fe)
+
+# Add commas to the number of obs
+tab["N.obs",] = comma(as.numeric(tab["N.obs",]))
+tab["BIC",] = comma(as.numeric(tab["BIC",]))
+
+# Create the table for the presentation
+kbl(tab, align = "c", booktabs = T, digits = 1) %>%
+  kable_styling(latex_option = "HOLD_position", full_width = F, font_size = 8) %>%
+  pack_rows("Fitted-Statistics", 3, 5) %>% pack_rows("Controls", 6, 10)
+```
+
+\begin{singlespace*}
+\scriptsize \textit{Notes: Effects of $PM_{2.5}$ on the number of monthly subdistrict convictions in the Indian lower judiciary. Point estimates come from a Poisson pseudo-maximum likelihood estimator panel model. Interpret the coefficients as the percentage increase in average convictions because of a ten-unit increase in $PM_{2.5}$. We present results across four specifications: (1) only includes subdistrict fixed effects; (2) accounts for seasonality through year and month fixed effects; (3) includes weather controls in discrete temperature and precipitation bins; and (4) examines a more flexible specification with year-by-month fixed effects. Cluster robust standard errors allowing for two-way clustering over courthouses and years in parenthesis. Significance: $0.01: ***$, $0.05: **$,  $0.1: *$} \normalsize 
+\end{singlespace*}
+
+While all models display a positive and statistically significant coefficient, they range from 1.31\% to 2.93\%. The effect size decreases between the first and second columns after we include year and month fixed effects, suggesting the presence of time-varying unobservables affecting our results. After we include weather controls in column (3), the coefficient decreases slightly and remains statistically significant. Including year-by-month fixed effects increases the coefficient to a 1.64% increase in convictions after a ten units rise in $PM_{2.5}$; this is our preferred specification as it flexibly controls for seasonality, cross-sectional differences across districts, and the effect of weather on air pollution and convictions. 
+
+In tables \ref{tbl-weather-robust-baseline}, \ref{tbl-fes-robust-baseline}, and \ref{tbl-cluster-robust-baseline}, we present robustness exercises across different specifications of weather controls (\ref{tbl-weather-robust-baseline}), fixed effects (\ref{tbl-fes-robust-baseline}), and clustering (\ref{tbl-cluster-robust-baseline}). Point estimates remain positive and statistically significant at the five percent level across all alternative specifications, increasing the robustness of our results and decreasing concerns of unobservable confounders driving our coefficients.
+
+These results imply a positive association between the monthly number of convicted individuals and the average $PM_{2.5}$ concentration in a given subdistrict. Although, to the best of our knowledge, these are the first estimates suggesting a negative effect of exposure to air pollution on sentencing, results can remain correlational if we fail to account for relevant unobservables like the incidence of traffic and noise. Moreover, point estimates may also be potentially affected by measurement error (ME) from aggregating and the use of remote sensing data. In the next section, we soothe worries related to OVB and ME with the control function (IV) approach [@lin2019testing]. 
+
+## Control Function Approach 
+
+
+Figures \ref{fig-FirstStageA} and \ref{fig-FirstStageB} of the appendix present the first stage point estimates on the effect of thermal inversions on $PM_{2.5}$. Coefficients confirm that thermal inversions significantly increase $PM_{2.5}$. Moreover, even though we cannot explicitly test for monotonicity, we find no evidence of inversions decreasing air pollution. As the instrument relates to weather conditions, there is still the possibility of confounding structural differences in days with and without thermal inversions [@sager2019estimating]. Nevertheless, these differences are unlikely to bias our estimates after flexibly accounting for weather-related variables and high-dimensional fixed effects [@sager2019estimating].
+
+@tbl-AcagIV presents the results of our instrumental variable approach across four specifications; (1) only includes subdistrict fixed effects; (2) adds year and month fixed effects; (3) includes weather controls in discrete temperature and precipitation bins; and (4) presents a more flexible specification with year-by-month fixed effects. We interpret point estimates as the local average treatment effect (LATE) of $PM_{2.5}$ on convictions for the sample of subdistricts where thermal inversions affect the concentrations of $PM_{2.5}$.^[Note that the treatment effect is not valid for subdistricts in which $PM_{2.5}$ is unaffected by thermal inversions (\textit{never-takers} and \textit{always-takers} as put by @angrist1996identification).] 
+
+
+
+```{r}
+#| label: tbl-AcagIV
+#| tbl-cap: Effects of PM25 on judicial convictions in India (IV-PPML)
+#| tbl-cap-location: top
+#| echo: false
+# Set the path 
+file = paste0(gsub("/05_submissions/eaere","", getwd()))
+# Load the results 
+tab = read_rds(paste0(file, "/02_gen/06_results/main_iv.rds"))
+
+# Construct a data frame of fixed effects
+fe = rbind(`District FEs` = c(rep("Yes", 4)), 
+           `Year FEs` = c(rep("", 1), rep("Yes", 3)), 
+           `Month FEs` = c(rep("", 1), rep("Yes", 3)), 
+           `Weather Controls` = c(rep("", 2), rep("Yes", 2)), 
+           `Year by Month FEs` = c(rep("", 3), rep("Yes", 1))) %>%
+  as.data.frame(.) %>% setNames(., names(tab))
+
+# Construct the data frame with the results
+tab = rbind(tab, fe)
+
+# Create the table for the presentation
+kbl(tab, align = "c", booktabs = T) %>%
+  kable_styling(latex_option = "HOLD_position", full_width = F, font_size = 8) %>%
+  pack_rows("Fitted-Statistics", 3, 6) %>% pack_rows("Controls", 7, 11)
+
+```
+
+\begin{singlespace*}
+
+\scriptsize  \textit{Notes: Effects of $PM_{2.5}$ on the number of monthly subdistrict convictions in the Indian lower judiciary. Point estimates come from a Poisson pseudo-maximum likelihood estimator IV panel model with quintile indicator variables of state-wide thermal inversions as an instrument for $PM_{2.5}$. We present results across four specifications: (1) only includes subdistrict fixed effects. (2) accounts for seasonality through year and month fixed effects. (3) includes weather controls in discrete temperature and precipitation bins. (4) examines a more flexible specification with Year-by-Month fixed effects. Cluster robust standard errors (Bootstrapped across 1,000 iterations) allow for two-way clustering over courthouses and years in parenthesis. Significance Codes: : $0.01: ***$, $0.05: **$,  $0.1: *$} \normalsize
+
+\end{singlespace*}
+
+
+In line with positive and significant first-stage coefficients, F-statistics exceed the rule-of-thumb value for weak instrument detection suggested by @staiger1994instrumental, implying that thermal inversions are a relevant determinant of monthly $PM_{2.5}$. The coefficient of the preferred specification implies that a ten units increase in monthly $PM_{2.5}$ raises the number of monthly convictions by a relevant 7.41%. 
+
+The coefficients of the control function approach represents the LATE for the set of states affected by thermal inversions. This distinction between the base and IV specifications is relevant in the presence of nonlinear effects as the control function approach would put more weight on the upper side of the $PM_{2.5}$ distribution. In this regard, while most epidemiological literature considers a linear link between air pollution and health outcomes [e.g., @medina2006effect; @zanobetti2006air], some studies suggest the existence of nonlinearities for cardiovascular mortality [@smith2010mind], respiratory morbidity [@dimeo1981threshold; @shen2017non], birth weight  [@winckelmans2015fetal], infant mortality [@chay2003impact], outpatient visits [@lin2013comparing], and pneumonia [@yang2022nonlinear]. For non-health outcomes, there is evidence of nonlinearities between air pollution and labor supply [@aragon2017particulate], productivity [@chang2016particulate, @chen2021impact], speech quality [@heyes2019pollution], athletes' performance [@guo2019running; @lichter2017productivity], demand for health insurance [@chang2018something], crime [@Sarmiento2022], and cognitive function [@allen2016associations; @bedi2021particle]. For instance, most effects of PM2.5 on cognitive performance happen above 100 AQI [@ebenstein2016long]. 
+
+In our context, effects may be nonlinear if a concave relationship exists between air pollution and judicial convictions. This nonlinear effect can happen if, for example, decision fatigue kicks in after a certain threshold. Another possibility is if there is an increasing marginal effect of $PM_{2.5}$ on the number of convictions. For instance, if the impact of exposure on the propensity to convict increases with exposure. @tbl-PoissonBinTbl explores the existence of nonlinearities in the relationship between $PM_{2.5}$ and monthly convictions by dividing $PM_{2.5}$ into exposure quintiles and estimating the effect of exposure concerning the lowest quintile.^[I.e., Q1 = 0-26, Q2 = 26-35, Q3 = 36-45, Q4 = 45-56, Q5 = 56-308.] 
+
+
+```{r}
+#| label: tbl-PoissonBinTbl
+#| tbl-cap: Nonlinear Effects of PM25 on judicial convictions in India
+#| tbl-cap-location: top
+#| echo: false
+# Set the path 
+file = paste0(gsub("/05_submissions/eaere","", getwd()))
+# Load the results 
+data = read_rds(paste0(file, "/02_gen/06_results/poisson_bins.rds"))
+
+# Add the specification 
+data = filter(data, spec == "(3)")
+
+#### Transform the tab object to a data frame for HTML ###
+tab = matrixreg(lapply(split(data, f = data$bin), function(x) 
+  createTexreg("", x$estimate, x$std.error, x$p.value,
+               gof.names = c(rep("N.Obs", nrow(x)), 
+                             rep("R2", nrow(x)), 
+                             rep("BIC", nrow(x))),
+               gof = c(x$n, x$r2, x$bic), 
+               gof.decimal = c(F,T,T))),
+  booktabs = T, digits = 2, stars = c(0.01, 0.05, 0.1)) %>%
+  as.data.frame(.)
+
+#### Style the data frame ####
+tab = tab[-1, ]; rownames(tab) = c("Estimate", "","N.obs", "R.Squared", "BIC") 
+tab = select(tab, -V1); colnames(tab) = c("Q2", "Q3", "Q4", "Q5")
+tab["N.obs",] = comma(as.numeric(tab["N.obs",]))
+tab["BIC",] = comma(as.numeric(tab["BIC",]))
+
+# Create the table for the presentation
+kbl(tab, align = "c", booktabs = T) %>%
+  kable_styling(latex_option = "HOLD_position", full_width = F, font_size = 8) %>%
+  pack_rows("Fitted-Statistics", 3, 5)
+
+```
+
+\begin{singlespace*}
+\scriptsize \textit{Notes: Effects of $PM_{2.5}$ exposure quintiles on the number of monthly subdistrict convictions in the Indian lower judiciary. Point estimates come from a Poisson pseudo-maximum likelihood estimator panel model. All columns control for weather covariates, subdistrict, and year-by-month fixed effects. Interpret point estimates as the effect of one month in the selected exposure quintile concerning the lowest quintile. Cluster robust standard errors allow two-way clustering over subdistricts and years in parenthesis. Significance Codes: : $0.01: ***$, $0.05: **$,  $0.1: *$} \normalsize
+\end{singlespace*}
+
+
+In line with nonlinearities, results show that point estimates grow with exposure. While a month in the second quintile increases convictions by 8.17%, a month in the highest quintile does it by a significant 16.20%. We should consider these nonlinearities when comparing the point estimates of the fixed effects and IV coefficients. While the base specification may suffer from OVB and ME, the IV is a local average treatment effect that only applies to the population of complier districts. Nonetheless, finding qualitatively similar results for both strategies increases the credibility of the econometric strategy.
+
+
+
+## Robustness
+
+Given the relevance of weather conditions for human behavior and air pollution, @tbl-weather-robust-section presents results across five different specifications of weather covariates. (1) contains no weather controls; (2) accounts for temperature and precipitation linearly; (3) includes a second-order polynomial of atmospheric temperature to consider nonlinearities in its relationship with air pollution; (4) adds wind speed as an additional control; and (5) contain the estimates from the preferred specification with decile indicator variables of average temperature and precipitation. Across specifications, estimates on the effect of $PM_{2.5}$ on sentencing remain robust and statistically significant at the one percent level.
+
+```{r}
+#| label: tbl-weather-robust-section
+#| tbl-cap: Effects of PM25 on monthly judicial convictions in India (weather - robustness)
+#| tbl-cap-location: top
+#| echo: false
+# Set the path 
+file = paste0(gsub("/05_submissions/eaere","", getwd()))
+# Load the results 
+tab = read_rds(paste0(file, "/02_gen/06_results/robustness_iv_weather_tab.rds"))
+
+# Create the table for the presentation
+kbl(tab, align = "c", booktabs = T) %>%
+  kable_styling(latex_option = "HOLD_position", full_width = F, font_size = 8) %>%
+  pack_rows("Fitted-Statistics", 3, 6) 
+
+```
+
+\begin{singlespace*}
+\scriptsize  \textit{Notes: Effects of $PM_{2.5}$ on the number of monthly subdistrict convictions in the Indian lower judiciary. Point estimates come from a Poisson pseudo-maximum likelihood estimator IV panel model with quintile indicator variables of state-wide thermal inversions as an instrument for $PM_{2.5}$. We present results across five specifications of weather controls while controlling for subdistrict and year-by-month fixed effects: (1) contains no weather covariates. (2) controls for temperature and precipitation linearly. (3) includes a second-order polynomial of atmospheric temperature. (4) adds wind speed as an additional control. And (5) contain the estimates from the preferred specification with decile indicator variables of average temperature and precipitation. Cluster robust standard errors (Bootstrapped across 1,000 iterations) allowing for two-way clustering over subdistricts and years in parenthesis. Significance Codes: : $0.01: ***$, $0.05: **$,  $0.1: *$} \normalsize
+\end{singlespace*}
+
+Next, @tbl-fes-robust-section presents point estimates for five subdistrict and time-fixed effects specifications. Across all specifications, we control for weather with decile indicator variables of average rain and precipitation. (1) contains no subdistrict nor time fixed effects; (2) adds subdistrict fixed effects to account for cross-sectional differences in convictions between areas with high and low air pollution; (3) adds year and month fixed effects; (4) is our preferred specification accounting for seasonality with year-by-month fixed effects; and (5) interacts the time-fixed effects with district indicator variables, i.e., year-by-district and year-by-month fixed effects. This last specification allows us to effectively account for district-level seasonality and policy changes occurring for all subdistricts within a district (or state) in the same year. Point estimates remain positive and significant across all specifications, but the first one without controlling for cross-sectional differences.^[The shift in the sign of point estimates between the first and second specifications implies that failing to control for cross-sectional differences across subdistricts would lead to opposite conclusions. Highlighting the importance of adequately accounting for cross-sectional heterogeneity in panel settings.]
+
+```{r}
+#| label: tbl-fes-robust-section
+#| tbl-cap: Effects of PM25 on monthly judicial convictions in India (Fixed Effects - robustness)
+#| tbl-cap-location: top
+#| echo: false
+# Set the path 
+file = paste0(gsub("/05_submissions/eaere","", getwd()))
+# Load the results 
+tab = read_rds(paste0(file, "/02_gen/06_results/robustness_iv_fes_tab.rds"))
+
+# Create the table for the presentation
+kbl(tab, align = "c", booktabs = T) %>%
+  kable_styling(latex_option = "HOLD_position", full_width = F, font_size = 8) %>%
+  pack_rows("Fitted-Statistics", 3, 6) 
+
+```
+
+\begin{singlespace*}
+\scriptsize  \textit{Notes: Effects of $PM_{2.5}$ on the number of monthly subdistrict convictions in the Indian lower judiciary. Point estimates come from a Poisson pseudo-maximum likelihood estimator IV panel model with quintile indicator variables of state-wide thermal inversions as an instrument for $PM_{2.5}$. We present results across five specifications of fixed effects while controlling the weather with decile indicator variables of average temperature and precipitation: (1) contains no individual nor time fixed effects; (2) adds subdistrict fixed effects; (3) adds year and month fixed effects; (4) is our preferred specification with year-by-month and subdistrict fixed effects; and (5) further includes year-by-district and month-by-district fixed effects. Cluster robust standard errors (Bootstrapped across 1,000 iterations) allowing for two-way clustering over subdistricts and years in parenthesis. Significance Codes: : $0.01: ***$, $0.05: **$,  $0.1: *$} \normalsize
+\end{singlespace*}
+
+@tbl-cluster-robust-section presents standard errors for four different cluster specifications of the error term. (1) is the preferred specification with two-way clustered standard errors at the subdistrict-year level to address within subdistrict correlation in the error term and autocorrelation over time; (2) assumes that the error correlates within districts by clustering at the district-year level; (3) only allows for one-way clustering at the subdistrict level; and (4) estimates standard errors by assuming that errors only correlate within all subdistricts in a district. Point estimates remain statistically significant across specifications.
+
+```{r}
+#| label: tbl-cluster-robust-section
+#| tbl-cap: Effects of PM25 on monthly judicial convictions in India (clustering - robustness)
+#| tbl-cap-location: top
+#| echo: false
+# Set the path 
+file = paste0(gsub("/05_submissions/eaere","", getwd()))
+# Load the results 
+tab = read_rds(paste0(file, "/02_gen/06_results/robustness_iv_cluster_tab.rds"))
+
+# Create the table for the presentation
+kbl(tab, align = "c", booktabs = T) %>%
+  kable_styling(latex_option = "HOLD_position", full_width = F, font_size = 8) %>%
+  pack_rows("Fitted-Statistics", 3, 6) 
+
+```
+
+\begin{singlespace*}
+\scriptsize  \textit{Notes: Effects of $PM_{2.5}$ on the number of monthly subdistrict convictions in the Indian lower judiciary. Point estimates come from a Poisson pseudo-maximum likelihood estimator IV panel model with quintile indicator variables of state-wide thermal inversions as an instrument for $PM_{2.5}$. All columns control for decile indicator variables of rain and temperature alongside subdistrict and year-by-month fixed effects. The columns only vary on the clustering level of standard errors: (1) is the preferred specification with two-way clustered standard errors at the subdistrict-year level; (2) assumes that the error correlates within districts by clustering at the district-by-year level; (3) only allows for one-way clustering at the subdistrict level; and (4) estimates standard errors by assuming that the error term only clusters within districts. We estimate the cluster-robust standard errors by bootstrapping across 1,000 iterations. Significance Codes: : $0.01: ***$, $0.05: **$,  $0.1: *$} \normalsize
+\end{singlespace*}
+
+We complement the control function approach by using state-specific wind direction indicator variables as an additional instrument for $PM_{2.5}$. By allowing the wind effect to change between states, our approach is similar to previous studies in economics using wind direction to instrument for air pollution like @bondy2020crime and @Deryugina2019. The identifying assumption is that conditional on covariates, monthly wind direction affects convictions only through $PM_{2.5}$. @tbl-WindIv shows the results of using wind direction instead of thermal inversions as an instrument. Reassuringly, point estimates remain positive, significant, and similar in size to the baseline fixed effects model.
+
+
+```{r}
+#| label: tbl-WindIv
+#| tbl-cap: Effects of PM25 on judicial convictions in India (IV-PPML)
+#| tbl-cap-location: top
+#| echo: false
+# Set the path 
+file = paste0(gsub("/05_submissions/eaere","", getwd()))
+# Load the results 
+tab = read_rds(paste0(file, "/02_gen/06_results/main_wind_iv.rds"))
+
+
+# Create the table for the presentation
+kbl(tab, align = "c", booktabs = T) %>%
+  kable_styling(latex_option = "HOLD_position", full_width = F, font_size = 8) %>%
+  pack_rows("Fitted-Statistics", 3, 5)
+
+```
+
+\begin{singlespace*}
+
+\scriptsize  \textit{Notes: Effects of $PM_{2.5}$ on the number of monthly subdistrict convictions in the Indian lower judiciary. Point estimates come from a Poisson pseudo-maximum likelihood estimator IV panel model with thirty-six indicator variables for the wind's direction across Indian states as an instrument for $PM_{2.5}$. We present results across four specifications: (1) only includes subdistrict fixed effects. (2) accounts for seasonality through year and month fixed effects. (3) includes weather controls in discrete temperature and precipitation bins. (4) examines a more flexible specification with Year-by-Month fixed effects. Cluster robust standard errors (Bootstrapped across 1,000 iterations) allow for two-way clustering over courthouses and years in parenthesis. Significance Codes: : $0.01: ***$, $0.05: **$,  $0.1: *$} \normalsize
+
+\end{singlespace*}
+
+Current literature suggests that exposure to air pollution increases criminal behavior [@herrnstadt2016air; @burkhardt2019effect; @bondy2020crime; @Sarmiento2022]. If elevated $PM_{2.5}$ increases the number of convictions only through more hearings, then the number of convictions would be higher by construction. Although high criminality is unlikely to drive our results because of the long gaps between crimes and hearings (typically weeks or months),^[Furthermore, the independent scheduling of the judicial process is likely orthogonal to $PM_{2.5}$.] we conduct a formal check by re-estimating the baseline specification with the number of cases and not convictions as the outcome variable. Results displayed in @tbl-AcagCases substantiate this theoretical and intuitive argument by showing a null effect of air pollution on the number of cases. 
+
+
+
+```{r}
+#| label: tbl-AcagCases
+#| tbl-cap: Effects of PM25 on monthly judicial cases in India
+#| tbl-cap-location: top
+#| echo: false
+# Set the path 
+file = paste0(gsub("/05_submissions/eaere","", getwd()))
+# Load the results 
+tab = read_rds(paste0(file, "/02_gen/06_results/poison_cases.rds"))
+
+# Create the table for the presentation
+kbl(tab, align = "c", booktabs = T) %>%
+  kable_styling(latex_option = "HOLD_position", full_width = F, font_size = 8) %>%
+  pack_rows("Fitted-Statistics", 3, 5)
+
+```
+
+\begin{singlespace*}
+\scriptsize \textit{Notes: Effects of $PM_{2.5}$ on the average number of monthly judicial hearings in Indian subdistricts. Point estimates result from regressing the number of hearings on $PM_{2.5}$ with Poisson pseudo-maximum likelihood estimator panel models. Cluster robust standard errors allow two-way clustering over courthouses and years in parenthesis. Significance Codes: $***: 0.01$, $**: 0.05$, $*: 0.1$} \normalsize
+\end{singlespace*}
+
+Finally,  we present a model including the first and second lag value of $PM_{2.5}$ as done by @ebenstein2016long and @burkhardt2019effect to dispel worries regarding the econometric specification. Figure \ref{fig: fig-Lags} shows the coefficients from re-estimating the four initial models with two lagged values of $PM_{2.5}$ as additional explanatory variables. The coefficients on the lags are of relatively small magnitudes and statistically insignificant, suggesting that air pollution levels for the months before the hearing do not affect sentencing decisions.
+
+\begin{figure}[!h]
+ \begin{center}
+  \includegraphics[width = 0.75\textwidth]{01_images/lag_results.png}
+ \end{center}
+\vspace{0.5cm}
+
+\begin{singlespace*}
+
+\scriptsize \textit{Notes: Contemporaneous and lagged effect of $PM_{2.5}$ on the number of monthly subdistrict convictions in the Indian lower judiciary. Point estimates come from a Poisson pseudo-maximum likelihood estimator IV panel model with quintile indicator variables of state-wide thermal inversions as an instrument for $PM_{2.5}$. We present results across four specifications: (1) only includes subdistrict fixed effects; (2) accounts for seasonality through year and month fixed effects; (3) includes weather controls in discrete temperature and precipitation bins; and (4) examines a more flexible specification with year-by-month fixed effects. Cluster robust standard errors allow for two-way clustering over subdistricts and years.} \normalsize 
+\end{singlespace*}
+
+\vspace{0.5cm}
+
+\caption{Effects of $PM_{2.5}$ on convictions (dynamic model)}
+\label{fig: fig-Lags}
+
+\end{figure}
+
+
+
+
+
+
+
+
+# Discussion {#sec-discussion}
+
+
+
+While legal formalism obligates Indian judges to solely apply statutory considerations to case evidence in a rational, automated, and deliberative fashion [@danziger2011extraneous], we find monthly $PM_{2.5}$ concentrations to increase convictions. Evidence from the fixed effects model suggests that a 10 $\mu g /m^3$ increase in monthly $PM_{2.5}$ raises convictions by 1.6%. The corresponding causal estimate from the control function approach demonstrates that its impacts are even more substantial at 7.41%. Although our results stand contrary to previous studies looking at the influence of contaminated air on judicial decisions [see @hou2020unpolluted], they are in line with a selection of articles suggesting a positive relationship between air pollution, aggression, anxiety, or the likelihood of punishing others [@herrnstadt2016air; @younan2018longitudinal; @burkhardt2019effect; @bondy2020crime; @herrnstadt2021air].  
+
+
+To illustrate the repercussions of $PM_{2.5}$ on convictions, we consider the universe of currently active criminal cases in the Indian lower Judiciary. There are one hundred and forty-four monthly cases and eight convictions per Indian subdistrict within our sample period. At his conviction rate, we expect 1.9 million convictions out of the 31.38 million active cases as of the $30^{th}$ of August 2022 [@ecourtsindia]. As such, increasing the concentration of $PM_{2.5}$ by 10 $\mu g/m^3$ across the entire country (assuming homogeneous treatment effects) would increase convictions by 31,160 and 145,450 cases with the fixed effects model and the control function approach, respectively.
+
+Although assessing the economic cost of a wrongful conviction is challenging, some studies have tried to estimate it through a combination of social, administrative, and individual costs. For instance, @silbert2015criminal look at 692 revoked convictions in California to estimate the legal costs of a single exoneration to approximate \$400,000. Their figure includes incarceration costs, legal spending, and victim compensation. The 692 examined cases spent 2,346 years of jail time, implying around 3.4 years per wrongful conviction. Taking costs to be linear, a year of wrongful conviction would have cost approximately \$118,000 per case in California. 
+
+Let us consider a simplified scenario where the corresponding cost in India is proportionate to differences in 2022 GDP per capita according to the World Bank. The equivalent figure would stand at \$3,068 per wrongful conviction, implying that the increase in convictions of 1.6% to 7.4% following a 10 $\mu m^3$ increase in $PM_{2.5}$ concentration would translate into a cost of around \$96 to \$444 million annually. While this back-of-the-envelope calculation is limited in insights, we find it helpful to illustrate that the effect of air pollution may not only be significant in terms of the number of convictions but also place a relevant cost burden on society.
+
+Aside from the fact that convictions swayed by external factors have immense implications for the fate of the concerned individual, their influence can also undermine trust in the entire judicial system and pose a risk to public trust [@norris2020criminal]. Moreover, while it is impossible to estimate the actual proportion of wrongful convictions, previous studies find evidence that citizens' perception of their share is often higher than the actual rate  [@huff1996convicted]. 
+
+
+
+# Conclussion
+
+
+In this study, we explore the impact of air pollution on the number of judicial convictions in India. For this, we probe the universe of Indian criminal cases from 2010 to 2018 and proxy $PM_{2.5}$ with state-of-the-art remote sensing data [@van2021monthly]. Our identification strategy relies on a high-dimensional fixed-effects Poisson pseudo-maximum likelihood estimator panel model and a control function approach to estimate the causal relationship between $PM_{2.5}$ and the number of monthly convictions in Indian subdistricts.
+
+While the estimates from the fixed effects model imply that a 10$\mu g/m^3$ increase in monthly $PM_{2.5}$ increases the number of convictions by 1.62\%, the control function results show a more significant coefficient of $7.24\%$. Simple back-of-the-envelope calculations indicate that the estimated effects are statistically and economically significant. Notably, this paper does not explore the bio-physiological channels driving the effects. As such, the finding remains a \textit{black-box} estimate hindering our capacity to explore the dynamics of the proposed mechanism, e.g., we cannot assert if the increase in convictions is due to physiological or psychological workings [@lu2020air]. Nonetheless, our findings match an array of possible explanations. I.e., pollution-induced irritability (as in the context of crime [@herrnstadt2016air]), higher anxiety [@kouchaki2015anxious], altered reasoning [@kunn2019indoor], and increased proclivity to punish [@lu2020air]. 
+
+This study is the first to look at pollution-induced bias in Indian legal processes and the first to find a significant effect of contaminated air on judicial outcomes. Our contribution also includes the empirical analysis of external influences on sentencing decisions in the context of limited data availability and low-quality pollution measures. Although our findings oppose previous evidence from China [@huang2020pollution], the relevant study only considers a selection of big cities and is not representative of the entire population. Moreover, setting, institutional capabilities, climate control, and environmental factors are likely to be different across contexts. Furthermore, the external validity of our results hinges on the particularities of the Indian Judiciary. Although there is little reason to believe that the bio-physiological mechanisms differ worldwide, Indian court processes are exceptionally long, and air pollution is particularly high in the Indian subcontinent.
+
+Our results add to the growing literature claiming that traditional cost-benefit analyses understate the actual costs of air pollution because they fail to measure its substantial sub-clinical effects [@chay2005does; @ebenstein2016long; @lu2018polluted]. According to this study, besides the enormous environmental, health, and resource misallocation cost of air pollution, exposure also entails a severe ethical burden on the judicial system with potential consequences for human high-stakes decision-making. This new evidence on the effects of air pollution on decision-making puts further pressure on governments to enact environmental policies like the NCAP to decrease citizens' exposure to nocive air.
+
+Future work could examine heterogeneous treatment effects across different dimensions like age, gender, or experience. For instance, there is evidence that the effects of air pollution on cognitive performance are more prominent for men [@ebenstein2016long; @zhang2018impact; @roth2020effect; @lu2020air]; This could be particularly relevant given the well-known gender imbalance in India's Judiciary [@ash2021measuring]. Another extension would be to look at heterogeneous treatment effects by crime category. Likewise, we only look at the binary decision of convicting people. Researchers could explore air pollution's influence on sentence severity instead of the number of convicted individuals, as done by @hou2020unpolluted. 
+
+
+
+\newpage
+\FloatBarrier
+
+# Appendix {.appendix}
+
+\renewcommand\thefigure{A.\arabic{figure}}    
+\setcounter{figure}{0}    
+\renewcommand\thetable{A.\arabic{table}}  
+
+
+\subsection{Data Section}
+
+![This figure presents a snapshot from a sample of the anonymised case data used to create the data on judicial hearings. The sample court record comes from the Indian eCourts [website](https://services.ecourts.gov.in/ecourtindia_v6/\#). Following @ash2021measuring, we use the *Acts* section to identify criminal cases and the *Under* section(s) to identify the type of crime .](01_images/casesample.png){#fig-SampleCourtData}
+
+
+\begin{figure}[!h]
+\begin{minipage}{.5\textwidth}
+       \centering
+       \caption*{A) Elevation}
+    \includegraphics[width = \textwidth]{01_images/ElevationMap.png}
+\end{minipage}
+\begin{minipage}{.5\textwidth}
+       \centering
+        \caption*{B) Political Map}
+    \includegraphics[width = \textwidth]{01_images/PoliticalMap.png}
+\end{minipage}
+
+\vspace{0.5cm}
+
+\begin{singlespace*}
+\scriptsize \textit{Notes: The left and right panels show the average elevation and the political division of India.} \normalsize 
+\end{singlespace*}
+
+\vspace{0.5cm}
+
+\caption{Elevation and political division of India}
+\label{fig: elevation}
+
+\end{figure}
+
+
+\subsection{Results Section}
+```{r}
+#| label: tbl-weather-robust-baseline
+#| tbl-cap: Effects of PM2.5 on monthly judicial convictions in India (weather - robustness)
+#| tbl-cap-location: top
+#| echo: false
+# Set the path 
+file = paste0(gsub("/05_submissions/eaere","", getwd()))
+# Load the results 
+tab = read_rds(paste0(file, "/02_gen/06_results/poisson_weather_robustness.rds"))
+
+# Create the table for the presentation
+kbl(tab, align = "c", booktabs = T) %>%
+  kable_styling(latex_option = "HOLD_position", full_width = F, font_size = 8) %>%
+  pack_rows("Fitted-Statistics", 3, 5) 
+
+```
+
+\begin{singlespace*}
+\scriptsize  \textit{Notes: Effects of $PM_{2.5}$ on the number of monthly subdistrict convictions in the Indian lower judiciary. Point estimates come from a Poisson pseudo-maximum likelihood estimator. We present results across five specifications of weather controls while controlling for subdistrict and year-by-month fixed effects: (1) contains no weather covariates. (2) controls for temperature and precipitation linearly. (3) includes a second order polynomial of atmospheric temperature. (4) adds wind speed as an additional control. And (5) contain the estimates from the preferred specification with decile indicator variables of average temperature and precipitation. Cluster robust standard errors (Bootstrapped across 1,000 iterations) allowing for two-way clustering over subdistricts and years in parenthesis. Significance Codes: : $0.01: ***$, $0.05: **$,  $0.1: *$} \normalsize
+\end{singlespace*}
+
+```{r}
+#| label: tbl-fes-robust-baseline
+#| tbl-cap: Effects of PM25 on monthly judicial convictions in India (fixed effects - robustness)
+#| tbl-cap-location: top
+#| echo: false
+# Set the path 
+file = paste0(gsub("/05_submissions/eaere","", getwd()))
+# Load the results 
+tab = read_rds(paste0(file, "/02_gen/06_results/poisson_fes_robustness.rds"))
+
+# Create the table for the presentation
+kbl(tab, align = "c", booktabs = T) %>%
+  kable_styling(latex_option = "HOLD_position", full_width = F, font_size = 8) %>%
+  pack_rows("Fitted-Statistics", 3, 5) 
+
+```
+
+\begin{singlespace*}
+\scriptsize  \textit{Notes: Effects of $PM_{2.5}$ on the number of monthly subdistrict convictions in the Indian lower judiciary. Point estimates come from a Poisson pseudo-maximum likelihood estimator IV panel model with quintile indicator variables of state-wide thermal inversions as an instrument for $PM_{2.5}$. We present results across five specifications of fixed effects while controlling weather with decile indicator variables of average temperature and precipitation: (1) contains no individual nor time fixed effects; (2) adds subdistrict fixed effects; (3) adds year and month fixed effects; (4) is our preferred specification with year-by-month and subdistrict fixed effects; and (5) further includes year-by-district and month-by-district fixed effects. Cluster robust standard errors (Bootstrapped across 1,000 iterations) allowing for two-way clustering over subdistricts and years in parenthesis. Significance Codes: : $0.01: ***$, $0.05: **$,  $0.1: *$} \normalsize
+\end{singlespace*}
+
+```{r}
+#| label: tbl-cluster-robust-baseline
+#| tbl-cap: Effects of PM2.5 on monthly judicial convictions in India (clustering - robustness)
+#| tbl-cap-location: top
+#| echo: false
+# Set the path 
+file = paste0(gsub("/05_submissions/eaere","", getwd()))
+# Load the results 
+tab = read_rds(paste0(file, "/02_gen/06_results/poisson_cluster_robustness.rds"))
+
+# Create the table for the presentation
+kbl(tab, align = "c", booktabs = T) %>%
+  kable_styling(latex_option = "HOLD_position", full_width = F, font_size = 8) %>%
+  pack_rows("Fitted-Statistics", 3, 5) 
+
+```
+
+\begin{singlespace*}
+\scriptsize  \textit{Notes: Effects of $PM_{2.5}$ on the number of monthly subdistrict convictions in the Indian lower judiciary. Point estimates come from a Poisson pseudo-maximum likelihood estimator IV panel model with quintile indicator variables of state-wide thermal inversions as an instrument for $PM_{2.5}$. All columns control for decile indicator variables of rain and temperature alongside subdistrict and year-by-month fixed effects. The columns only vary on the clustering-level of standard errors: (1) is the preferred specification with two-way clustered standard errors at the subdistrict-year level; (2) assumes that the error correlates within districts by clustering at the district-by-year level; (3) only allows for one-way clustering at the subdistrict level; and (4) estimates standard errors by assuming that the error term only clusters within districts. We estimate the cluster-robust standard errors by bootstrapping across 1,000 iterations. Significance Codes: : $0.01: ***$, $0.05: **$,  $0.1: *$} \normalsize
+\end{singlespace*}
+
+![First Stage point estimates of the prefered PPMLE-IV Design. Estimates come from a first-stage OLS model on the effect of thermal inversions on fine particulate matter. We divide the continous measure of thermal inversions into indicator variables of strength quintiles and estimate the effect of each quintile concerning the lowest on PM2.5. We present results for three specifications. (1) only contains station fixe efffects. (2) adds year and month fixed effects to control for seasonality. (3) Includes weather covariates in the form of decile indicator variables for temperature and precipitation.  ](01_images/FirstStageb.pdf){#fig-FirstStageA}
+
+![First Stage point estimates of the prefered PPMLE-IV Design. Estimates come from a first-stage OLS model on the effect of thermal inversions on fine particulate matter. We divide the continous measure of thermal inversions into indicator variables of strength quintiles and estimate the effect of each quintile concerning the lowest on PM2.5. We present results for three specifications. (3) Includes weather covariates in the form of decile indicator variables for temperature and precipitation. (4) adds year-by-month fixed effects.  ](01_images/FirstStageA.pdf){#fig-FirstStageB}
+
+\FloatBarrier
+
